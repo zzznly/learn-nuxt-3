@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card">
+  <q-card class="my-card" @click="$emit('click')">
     <img src="https://i.ibb.co/XbsPPmQ/image.png" />
 
     <q-card-section>
@@ -11,4 +11,14 @@
   </q-card>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+  thumbnail: string;
+  title: string;
+  subtitle: string;
+}
+defineProps<Props>();
+defineEmits<{
+  click: [];
+}>();
+</script>
