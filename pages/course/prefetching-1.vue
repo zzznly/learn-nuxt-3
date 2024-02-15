@@ -8,6 +8,7 @@
 
 <script lang="ts">
 console.log('prefetching-1');
+export default {};
 </script>
 
 <script setup lang="ts"></script>
