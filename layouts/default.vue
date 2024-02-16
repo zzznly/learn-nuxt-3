@@ -16,20 +16,28 @@
           <q-btn stretch flat label="Admin" no-caps @click="navigate" />
         </NuxtLink>
         <q-separator dark vertical />
-        <NuxtLink v-slot="{ navigate }" custom to="/login">
+        <NuxtLink
+          v-if="!isAuthenticated"
+          v-slot="{ navigate }"
+          custom
+          to="/login"
+        >
           <q-btn stretch flat label="login" no-caps @click="navigate()" />
         </NuxtLink>
-        <NuxtLink v-slot="{ navigate }" custom to="/">
-          <q-btn stretch flat label="logout" no-caps @click="navigate()" />
-        </NuxtLink>
+        <q-btn v-else stretch flat label="logout" no-caps @click="signOut" />
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">
+      <q-banner v-if="isAuthenticated" class="bg-primary text-white">{{
+        authUser
+      }}</q-banner>
       <slot></slot>
     </q-page-container>
   </q-layout>
 </template>
 <script setup lang="ts">
+const { authUser, isAuthenticated } = useAuthUser();
+const { signOut } = useAuth();
 const pageContainerStyle = computed(() => ({
   maxWidth: '1080px',
   margin: '0 auto',
