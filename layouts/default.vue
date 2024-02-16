@@ -15,6 +15,13 @@
         <NuxtLink v-slot="{ navigate }" custom to="/admin">
           <q-btn stretch flat label="Admin" no-caps @click="navigate" />
         </NuxtLink>
+        <q-separator dark vertical />
+        <NuxtLink v-slot="{ navigate }" custom to="/login">
+          <q-btn stretch flat label="login" no-caps @click="navigate()" />
+        </NuxtLink>
+        <NuxtLink v-slot="{ navigate }" custom to="/">
+          <q-btn stretch flat label="logout" no-caps @click="navigate()" />
+        </NuxtLink>
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">
