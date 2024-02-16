@@ -1,5 +1,5 @@
 <template>
-  <div class="text-h3">{{ title }}</div>
+  <div class="text-h2 q-mt-xl q-mb-md">{{ title }}</div>
 </template>
 <script setup lang="ts">
 defineProps<{ title: string }>();
