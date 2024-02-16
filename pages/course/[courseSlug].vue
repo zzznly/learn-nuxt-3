@@ -109,6 +109,20 @@ definePageMeta({
   keepalive: true,
   alias: ['/lecture/:courseSlug'],
   // layout: 'same-layout',
+  middleware: (route) => {
+    const courseSlug = route.params.courseSlug as string;
+    const { course } = useCourse(courseSlug);
+    if (!course) {
+      // return navigateTo('/');
+      return abortNavigation(
+        createError({
+          statusCode: 404,
+          statusMessage: 'Course not found',
+          fatal: true,
+        }),
+      );
+    }
+  },
 });
 const memo = ref('');
 const completed = ref(false);
